@@ -39,8 +39,6 @@ int main(){
 		tempoExecucao( V, n, chavesDeBusca[j] );	
 	}
 	
-
-
 	return 0;
 
 }
@@ -89,7 +87,3 @@ int tempoExecucao( int *V, int n, int x ){
 	return 0;
 
 }
-
-
-// PARA EXECUTAR
-// g++ src/main.cpp src/bBinariaIterativa.cpp src/bBinariaRecursiva.cpp src/bSequencialIterativa.cpp src/bSequencialRecursiva.cpp -std=c++11 -I include -o main
