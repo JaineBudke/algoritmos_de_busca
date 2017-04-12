@@ -1,25 +1,17 @@
-/********************************************************************* 
- *
- * Main program, com medição de tempo de execução dos algoritmos de busca
- *
- * @author Bianca Santiago
- * @author Jaine Budke
- *
- * @date 16/04/2017
-*********************************************************************/
+/**
+ * @file	main.cpp
+ * @brief	Código fonte do prgrama com medição de tempo de execução dos algoritmos de busca
+ * @author	Bianca Santiago (bianca.santiago72@gmail.com)
+ * @author	Jaine Budke (jainebudke@hotmail.com)
+ * @since	25/03/2017
+ * @date	16/04/2017
+ */
 
+#include "buscas.h"
 
-#include <iostream>
-#include <iomanip>
-#include <time.h>
-
-#include "bBinariaIterativa.h"
-#include "bBinariaRecursiva.h"
-#include "bSequencialIterativa.h"
-#include "bSequencialRecursiva.h"
-
-int tempoExecucao( int *V, int n, int x );
-
+/**
+*@brief Função principal ue contém o tempo de execução dos algoritmos ded busca.
+*/
 int main(){
 
 
@@ -27,13 +19,14 @@ int main(){
 	int V[] = {  1,  3,  5,  7,   8,  13,  15, 18, 19, 22, 24, 27, 29,
 					33, 35, 43, 54,  55,  58,  59, 60, 71, 73, 78, 79, 80, 
 					83, 84, 85,	99, 101, 111, 112 };
+
 	int chavesDeBusca[] = { 1, 15, 27, 59, 77, 112 };
 
 	/* FORMATAÇÃO SAÍDA */
 	for( int i=1; i<=6; i++ ){
-		std::cout << "+" << std::setw (14) << std::setfill ('-');
+		cout << "+" << std::setw (14) << std::setfill ('-');
 	}
-	std::cout << std::endl;
+	cout << std::endl;
 
 	for ( int j = 0; j <= 5 ; ++j ) {
 		tempoExecucao( V, n, chavesDeBusca[j] );	
@@ -43,6 +36,14 @@ int main(){
 
 }
 
+/**
+ * @brief Realiza a medição do tempo da execuçaõ de cada algoritmo de busca.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho do vetor.
+ * @param x Chave de busca.
+ * @return O tempo de execução dos algoritmos de busca.
+ */
 int tempoExecucao( int *V, int n, int x ){
 
 	clock_t Ticks[8];
@@ -69,19 +70,19 @@ int tempoExecucao( int *V, int n, int x ){
 
 
 	/* FORMATAÇÃO SAÍDA */
-	std::cout << std::endl << "CHAVE DE BUSCA = " << x << std::endl;
+	cout << endl << "CHAVE DE BUSCA = " << x << endl;
 	
-	std::cout << "TEMPO DE BUSCA: ";
-	std::cout << "BINÁRIA ITERATIVA = " << tempoBI << std::endl;
-	std::cout << "BINÁRIA RECURSIVA = " << tempoBR << std::endl;
-	std::cout << "SEQUENCIAL ITERATIVA = " << tempoSI << std::endl;
-	std::cout << "SEQUENCIAL RECURSIVA = " << tempoSR << std::endl;
-	std::cout << std::endl;
+	cout << "TEMPO DE BUSCA: ";
+	cout << "BINÁRIA ITERATIVA = " << tempoBI << endl;
+	cout << "BINÁRIA RECURSIVA = " << tempoBR << endl;
+	cout << "SEQUENCIAL ITERATIVA = " << tempoSI << endl;
+	cout << "SEQUENCIAL RECURSIVA = " << tempoSR << endl;
+	cout << endl;
 
 	for( int i=1; i<=6; i++ ){
-		std::cout << "+" << std::setw (14) << std::setfill ('-');
+		cout << "+" << std::setw (14) << std::setfill ('-');
 	}
-	std::cout << std::endl;
+	cout << endl;
 
 
 	return 0;
