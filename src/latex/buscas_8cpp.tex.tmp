@@ -1,0 +1,140 @@
+\hypertarget{buscas_8cpp}{}\section{buscas.\+cpp File Reference}
+\label{buscas_8cpp}\index{buscas.\+cpp@{buscas.\+cpp}}
+
+
+Código fonte com a implementacao de funcoes que realizam uma busca em uma base de dados, passada por parametro por meio de um vetor, de tamanho n.  
+
+
+{\ttfamily \#include \char`\"{}buscas.\+h\char`\"{}}\\*
+Include dependency graph for buscas.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{buscas_8cpp_ae22927e6f46e2f190f05fc5847f66458}{b\+Binaria\+Iterativa} (int $\ast$V, int n, int x)
+\begin{DoxyCompactList}\small\item\em Realiza uma busca binária em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. \end{DoxyCompactList}\item 
+int \hyperlink{buscas_8cpp_a9870e73339be68dd80731d3d2a155702}{b\+Binaria\+Recursiva} (int $\ast$V, int n, int x)
+\begin{DoxyCompactList}\small\item\em Realiza uma busca binária em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. \end{DoxyCompactList}\item 
+int \hyperlink{buscas_8cpp_a27feef37ad6a38d484685a024ce1845c}{b\+Sequencial\+Iterativa} (int $\ast$V, int n, int x)
+\begin{DoxyCompactList}\small\item\em Realiza uma busca sequencial em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. \end{DoxyCompactList}\item 
+int \hyperlink{buscas_8cpp_ae1510ffed32434eec8563437c049a49a}{b\+Sequencial\+Recursiva} (int $\ast$V, int n, int x)
+\begin{DoxyCompactList}\small\item\em Realiza uma busca sequencial em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Código fonte com a implementacao de funcoes que realizam uma busca em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. 
+
+\begin{DoxyAuthor}{Author}
+Bianca Santiago (\href{mailto:bianca.santiago72@gmail.com}{\tt bianca.\+santiago72@gmail.\+com}) 
+
+Jaine Budke (\href{mailto:jainebudke@hotmail.com}{\tt jainebudke@hotmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxySince}{Since}
+25/03/2017 
+\end{DoxySince}
+\begin{DoxyDate}{Date}
+16/04/2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{buscas.\+cpp@{buscas.\+cpp}!b\+Binaria\+Iterativa@{b\+Binaria\+Iterativa}}
+\index{b\+Binaria\+Iterativa@{b\+Binaria\+Iterativa}!buscas.\+cpp@{buscas.\+cpp}}
+\subsubsection[{\texorpdfstring{b\+Binaria\+Iterativa(int $\ast$\+V, int n, int x)}{bBinariaIterativa(int *V, int n, int x)}}]{\setlength{\rightskip}{0pt plus 5cm}int b\+Binaria\+Iterativa (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{V, }
+\item[{int}]{n, }
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{buscas_8cpp_ae22927e6f46e2f190f05fc5847f66458}{}\label{buscas_8cpp_ae22927e6f46e2f190f05fc5847f66458}
+
+
+Realiza uma busca binária em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. 
+
+Algoritmo de busca implementado de maneira iterativa. 
+\begin{DoxyParams}{Parameters}
+{\em V} & Vetor com a base de busca. \\
+\hline
+{\em n} & Tamanho do vetor. \\
+\hline
+{\em x} & Chave de busca. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Se elemento foi encontrado (\char`\"{}1\char`\"{} se encontrado ou \char`\"{}0\char`\"{} se não encontrado). 
+\end{DoxyReturn}
+\index{buscas.\+cpp@{buscas.\+cpp}!b\+Binaria\+Recursiva@{b\+Binaria\+Recursiva}}
+\index{b\+Binaria\+Recursiva@{b\+Binaria\+Recursiva}!buscas.\+cpp@{buscas.\+cpp}}
+\subsubsection[{\texorpdfstring{b\+Binaria\+Recursiva(int $\ast$\+V, int n, int x)}{bBinariaRecursiva(int *V, int n, int x)}}]{\setlength{\rightskip}{0pt plus 5cm}int b\+Binaria\+Recursiva (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{V, }
+\item[{int}]{n, }
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{buscas_8cpp_a9870e73339be68dd80731d3d2a155702}{}\label{buscas_8cpp_a9870e73339be68dd80731d3d2a155702}
+
+
+Realiza uma busca binária em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. 
+
+Algoritmo de busca implementado de maneira recursiva. 
+\begin{DoxyParams}{Parameters}
+{\em V} & Vetor com a base de busca. \\
+\hline
+{\em n} & Tamanho do vetor. \\
+\hline
+{\em x} & Chave de busca. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Se elemento foi encontrado (\char`\"{}1\char`\"{} se encontrado ou \char`\"{}0\char`\"{} se não encontrado). 
+\end{DoxyReturn}
+\index{buscas.\+cpp@{buscas.\+cpp}!b\+Sequencial\+Iterativa@{b\+Sequencial\+Iterativa}}
+\index{b\+Sequencial\+Iterativa@{b\+Sequencial\+Iterativa}!buscas.\+cpp@{buscas.\+cpp}}
+\subsubsection[{\texorpdfstring{b\+Sequencial\+Iterativa(int $\ast$\+V, int n, int x)}{bSequencialIterativa(int *V, int n, int x)}}]{\setlength{\rightskip}{0pt plus 5cm}int b\+Sequencial\+Iterativa (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{V, }
+\item[{int}]{n, }
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{buscas_8cpp_a27feef37ad6a38d484685a024ce1845c}{}\label{buscas_8cpp_a27feef37ad6a38d484685a024ce1845c}
+
+
+Realiza uma busca sequencial em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. 
+
+Algoritmo de busca implementado de maneira iterativa. 
+\begin{DoxyParams}{Parameters}
+{\em V} & Vetor com a base de busca. \\
+\hline
+{\em n} & Tamanho do vetor. \\
+\hline
+{\em x} & Chave de busca. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Se elemento foi encontrado (\char`\"{}1\char`\"{} se encontrado ou \char`\"{}0\char`\"{} se não encontrado). 
+\end{DoxyReturn}
+\index{buscas.\+cpp@{buscas.\+cpp}!b\+Sequencial\+Recursiva@{b\+Sequencial\+Recursiva}}
+\index{b\+Sequencial\+Recursiva@{b\+Sequencial\+Recursiva}!buscas.\+cpp@{buscas.\+cpp}}
+\subsubsection[{\texorpdfstring{b\+Sequencial\+Recursiva(int $\ast$\+V, int n, int x)}{bSequencialRecursiva(int *V, int n, int x)}}]{\setlength{\rightskip}{0pt plus 5cm}int b\+Sequencial\+Recursiva (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{V, }
+\item[{int}]{n, }
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{buscas_8cpp_ae1510ffed32434eec8563437c049a49a}{}\label{buscas_8cpp_ae1510ffed32434eec8563437c049a49a}
+
+
+Realiza uma busca sequencial em uma base de dados, passada por parametro por meio de um vetor, de tamanho n. 
+
+Algoritmo de busca implementado de maneira recursiva. 
+\begin{DoxyParams}{Parameters}
+{\em V} & Vetor com a base de busca. \\
+\hline
+{\em n} & Tamanho do vetor. \\
+\hline
+{\em x} & Chave de busca. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Se elemento foi encontrado (\char`\"{}1\char`\"{} se encontrado ou \char`\"{}0\char`\"{} se não encontrado). 
+\end{DoxyReturn}
