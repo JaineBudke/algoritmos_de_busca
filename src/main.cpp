@@ -29,7 +29,14 @@ int main(){
 		generateRandomBase( base, tamBase ); // Gera base de busca aleatória e ordenada
 
 
-		int chavesDeBusca[] = { 1, 15, 27, 59, 77, 112 };
+		int qntKeys = 3;
+		/* CHAVES DE BUSCA:
+		 * Melhor caso sequencial -> primeiro elemento = base[0].
+		 * Pior caso sequencial   -> elemento não existe = base[ tamBase-1 ]+1.
+		 * Melhor caso binária    -> elemento do meio = base[ tamBase/2 ].
+		 * Pior caso binária      -> elemento não existe = base[ tamBase-1 ]+1.
+		 */
+		int chavesDeBusca[] = { base[0], base[ tamBase-1 ]+1, base[ tamBase/2 ] };
 
 
 		/* FORMATAÇÃO SAÍDA */
@@ -37,11 +44,11 @@ int main(){
 			cout << "+" << std::setw (14) << std::setfill ('-');
 		}
 		cout << std::endl;
-
+		
 
 		cout << endl << "TAMANHO BASE DE BUSCA = " << tamBase << endl;
 		/* MEDIÇÃO DO TEMPO DE CADA IMPLEMENTAÇÃO DE BUSCA E COM CHAVES DE BUSCA DIFERENTES */
-		for ( int j = 0; j <= 5 ; ++j ) {
+		for ( int j = 0; j < qntKeys ; ++j ) {
 			tempoExecucao( base, tamBase, chavesDeBusca[j] );	
 		}
 
@@ -62,6 +69,7 @@ int main(){
  * @return O tempo de execução dos algoritmos de busca.
  */
 int tempoExecucao( int *V, int n, int x ){
+
 
 	clock_t Ticks[8];
 
@@ -84,8 +92,8 @@ int tempoExecucao( int *V, int n, int x ){
 	bSequencialRecursiva( V, n, x );
 	Ticks[7] = clock();
 	double tempoSR = (Ticks[7] - Ticks[6]) * 1000.0 / CLOCKS_PER_SEC;
-
-
+	
+	
 	/* FORMATAÇÃO SAÍDA */
 	cout << endl << "CHAVE DE BUSCA = " << x << endl;
 	
