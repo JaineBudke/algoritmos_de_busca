@@ -19,6 +19,9 @@ using std::endl;
 #include <iomanip>
 #include <time.h>
 
+#include <ctime>
+#include <cstdlib>
+
 /**
  * @brief Realiza a medição do tempo da execuçaõ de cada algoritmo de busca.
  * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
@@ -28,6 +31,25 @@ using std::endl;
  * @return O tempo de execução dos algoritmos de busca.
  */
 int tempoExecucao( int *V, int n, int x );
+
+
+/**
+ * @brief Realiza a comparação entre dois valores.
+ * @param a Primeiro valor para comparação.
+ * @param b Segundo valor para comparação.
+ * @return Se a é menor, maior ou igual a b.
+ */
+int compare( const void * a, const void * b );
+
+
+/**
+ * @brief Gera a base de busca aleatória.
+ * @details Função implementada fazendo uso das bibliotecas ctime e cstdlib.
+ * @param base Vetor com a base de busca.
+ * @param tamBase Tamanho da base de busca.
+ */
+void generateRandomBase( int *base, int tamBase );
+
 
 /**
  * @brief Realiza uma busca binária em uma base de dados, passada por 

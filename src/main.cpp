@@ -9,35 +9,52 @@
 
 #include "buscas.h"
 
+
 /**
-*@brief Função principal ue contém o tempo de execução dos algoritmos ded busca.
+*@brief Função principal que contém o tempo de execução dos algoritmos de busca.
 */
 int main(){
 
+	std::srand(std::time(0)); // semente do rand
 
-	int n = 33;
-	int V[] = {  1,  3,  5,  7,   8,  13,  15, 18, 19, 22, 24, 27, 29,
-					33, 35, 43, 54,  55,  58,  59, 60, 71, 73, 78, 79, 80, 
-					83, 84, 85,	99, 101, 111, 112 };
+	int nBases = 5; // Quantidade de bases de busca
+	int tamN[] = { 50, 100, 1000, 10000, 100000 }; // Tamanhos das bases de busca
 
-	int chavesDeBusca[] = { 1, 15, 27, 59, 77, 112 };
 
-	/* FORMATAÇÃO SAÍDA */
-	for( int i=1; i<=6; i++ ){
-		cout << "+" << std::setw (14) << std::setfill ('-');
+	for ( int i = 0 ; i < nBases ; ++i ) { // Fazendo várias buscas, com bases aleatórias de diferentes tamanhos
+		
+		int tamBase = tamN[i]; // Tamanho da base de busca
+		int base[ tamBase ];   // Vetor com os valores da base
+
+		generateRandomBase( base, tamBase ); // Gera base de busca aleatória e ordenada
+
+
+		int chavesDeBusca[] = { 1, 15, 27, 59, 77, 112 };
+
+
+		/* FORMATAÇÃO SAÍDA */
+		for( int i=1; i<=6; i++ ){
+			cout << "+" << std::setw (14) << std::setfill ('-');
+		}
+		cout << std::endl;
+
+
+		cout << endl << "TAMANHO BASE DE BUSCA = " << tamBase << endl;
+		/* MEDIÇÃO DO TEMPO DE CADA IMPLEMENTAÇÃO DE BUSCA E COM CHAVES DE BUSCA DIFERENTES */
+		for ( int j = 0; j <= 5 ; ++j ) {
+			tempoExecucao( base, tamBase, chavesDeBusca[j] );	
+		}
+
 	}
-	cout << std::endl;
 
-	for ( int j = 0; j <= 5 ; ++j ) {
-		tempoExecucao( V, n, chavesDeBusca[j] );	
-	}
+	
 	
 	return 0;
 
 }
 
 /**
- * @brief Realiza a medição do tempo da execuçaõ de cada algoritmo de busca.
+ * @brief Realiza a medição do tempo da execução de cada algoritmo de busca.
  * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
  * @param V Vetor com a base de busca.
  * @param n Tamanho do vetor.
@@ -86,5 +103,47 @@ int tempoExecucao( int *V, int n, int x ){
 
 
 	return 0;
+
+}
+
+
+/**
+ * @brief Realiza a comparação entre dois valores.
+ * @param a Primeiro valor para comparação.
+ * @param b Segundo valor para comparação.
+ * @return Se a é menor, maior ou igual a b.
+ */
+int compare( const void * a, const void * b ) {
+ 
+    const int *intA = static_cast <const int*> ( a );
+    const int *intB = static_cast <const int*> ( b );
+ 
+    if ( *intA == *intB ) {
+        return 0;
+    } else if ( *intA < *intB ) {
+        return -1;
+    } else if ( *intA > *intB ) {
+        return 1;
+    } 
+ 
+}
+
+
+/**
+ * @brief Gera a base de busca aleatória.
+ * @details Função implementada fazendo uso das bibliotecas ctime e cstdlib.
+ * @param base Vetor com a base de busca.
+ * @param tamBase Tamanho da base de busca.
+ */
+void generateRandomBase( int *base, int tamBase ){
+
+	for ( int i = 0; i < tamBase; ++i ) { // gerando base de busca
+		int num_aleatorio = std::rand() % 200000; // número aleatório entre 0 e 2000
+	   	base[i] = num_aleatorio; // Add valor à base
+	}
+
+	// Ordena base de busca
+	qsort( base, tamBase, sizeof( int ), compare );
+	
 
 }
