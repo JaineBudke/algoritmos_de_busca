@@ -27,4 +27,4 @@ Comando para executar o programa
 
 
 
-Programa desenvolvido por _Bianca Santiago_ (< *email@gmail.com* >) e _Jaine Budke_ (< *jainebudke@hotmail.com* >), 2017.1
+Programa desenvolvido por _Bianca Santiago_ (< *bianca.santiago72@gmail.com* >) e _Jaine Budke_ (< *jainebudke@hotmail.com* >), 2017.1
