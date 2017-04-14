@@ -22,15 +22,20 @@ using std::endl;
 #include <ctime>
 #include <cstdlib>
 
+#include <fstream>
+#include <string>
+
+
 /**
  * @brief Realiza a medição do tempo da execuçaõ de cada algoritmo de busca.
  * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
  * @param V Vetor com a base de busca.
  * @param n Tamanho do vetor.
  * @param x Chave de busca.
  * @return O tempo de execução dos algoritmos de busca.
  */
-int tempoExecucao( int *V, int n, int x );
+int tempoExecucao( std::ofstream & arqsaida, int *V, int n, int x );
 
 
 /**
