@@ -14,11 +14,34 @@
 *@brief Função principal que contém o tempo de execução dos algoritmos de busca.
 */
 int main(){
-
+	
 	std::srand(std::time(0)); // semente do rand
 
 	int nBases = 5; // Quantidade de bases de busca
 	int tamN[] = { 50, 100, 1000, 10000, 100000 }; // Tamanhos das bases de busca
+
+	
+	// GRAVANDO DADOS EM ARQUIVO
+	std::ofstream arqsaida;
+	arqsaida.open( "dados.txt", std::ios::out );
+	if( !arqsaida.is_open() ){
+		return 0;
+	}
+
+	std::cout << "Gerando dados..." << std::endl;
+
+	// Grava o cabeçalho
+	arqsaida << "#Dados para o script geraGrafico.gnu" << std::endl;
+	/*
+	 * X - Tamanho da base de busca
+	 * Y - Tempo de execução
+	 * Z - Tipo da busca = { 1 - binária iterativa
+	 						 2 - binária recursiva
+	 						 3 - sequencial iterativa
+	 						 4 - sequencial recursiva }
+	 * W - Chave de busca						 
+	*/
+	arqsaida << "#X" << std::setw(10) << "#Y" << std::setw(10) << "#Z" << std::setw(10) << "#W" << std::endl;
 
 
 	for ( int i = 0 ; i < nBases ; ++i ) { // Fazendo várias buscas, com bases aleatórias de diferentes tamanhos
@@ -39,22 +62,16 @@ int main(){
 		int chavesDeBusca[] = { base[0], base[ tamBase-1 ]+1, base[ tamBase/2 ] };
 
 
-		/* FORMATAÇÃO SAÍDA */
-		for( int i=1; i<=6; i++ ){
-			cout << "+" << std::setw (14) << std::setfill ('-');
-		}
-		cout << std::endl;
-		
-
-		cout << endl << "TAMANHO BASE DE BUSCA = " << tamBase << endl;
 		/* MEDIÇÃO DO TEMPO DE CADA IMPLEMENTAÇÃO DE BUSCA E COM CHAVES DE BUSCA DIFERENTES */
 		for ( int j = 0; j < qntKeys ; ++j ) {
-			tempoExecucao( base, tamBase, chavesDeBusca[j] );	
+			tempoExecucao( arqsaida, base, tamBase, chavesDeBusca[j] );	
 		}
 
 	}
 
-	
+	// FECHANDO ARQUIVO COM DADOS
+	std::cout << "Fechando o arquivo..." << std::endl;
+	arqsaida.close();
 	
 	return 0;
 
@@ -63,12 +80,13 @@ int main(){
 /**
  * @brief Realiza a medição do tempo da execução de cada algoritmo de busca.
  * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
  * @param V Vetor com a base de busca.
- * @param n Tamanho do vetor.
+ * @param n Tamanho da base de busca.
  * @param x Chave de busca.
  * @return O tempo de execução dos algoritmos de busca.
  */
-int tempoExecucao( int *V, int n, int x ){
+int tempoExecucao( std::ofstream & arqsaida, int *V, int n, int x ){
 
 
 	clock_t Ticks[8];
@@ -93,21 +111,19 @@ int tempoExecucao( int *V, int n, int x ){
 	Ticks[7] = clock();
 	double tempoSR = (Ticks[7] - Ticks[6]) * 1000.0 / CLOCKS_PER_SEC;
 	
-	
-	/* FORMATAÇÃO SAÍDA */
-	cout << endl << "CHAVE DE BUSCA = " << x << endl;
-	
-	cout << "TEMPO DE BUSCA: ";
-	cout << "BINÁRIA ITERATIVA = " << tempoBI << endl;
-	cout << "BINÁRIA RECURSIVA = " << tempoBR << endl;
-	cout << "SEQUENCIAL ITERATIVA = " << tempoSI << endl;
-	cout << "SEQUENCIAL RECURSIVA = " << tempoSR << endl;
-	cout << endl;
 
-	for( int i=1; i<=6; i++ ){
-		cout << "+" << std::setw (14) << std::setfill ('-');
+
+	// Gravando os registros numéricos
+	arqsaida << n << std::setw(10) << tempoBI << std::setw(10) << 1 << std::setw(10) << x << std::endl;
+	arqsaida << n << std::setw(10) << tempoBR << std::setw(10) << 2 << std::setw(10) << x << std::endl;
+	arqsaida << n << std::setw(10) << tempoSI << std::setw(10) << 3 << std::setw(10) << x << std::endl;
+	arqsaida << n << std::setw(10) << tempoSR << std::setw(10) << 4 << std::setw(10) << x << std::endl;
+
+	// Tratamento de erro de leitura de arquivo
+	if( arqsaida.fail() ) {
+		std::cout << "Erro fatal!" << std::endl;
+		exit(1); // Aborta programa
 	}
-	cout << endl;
 
 
 	return 0;
