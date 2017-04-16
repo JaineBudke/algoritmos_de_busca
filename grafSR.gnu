@@ -1,4 +1,4 @@
-#Instruções para plotar sen(x)
+#Instruções para plotar Sequencial Recursiva
 reset
 set grid
 set title "Busca Sequencial Recursiva"

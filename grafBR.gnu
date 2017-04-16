@@ -1,4 +1,4 @@
-#Instruções para plotar sen(x)
+#Instruções para plotar Binaria Recursiva
 reset
 set grid
 set title "Busca Binaria Recursiva"
