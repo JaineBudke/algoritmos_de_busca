@@ -10,12 +10,12 @@ Análise empírica dos algoritmos de busca sequencial e binária, implementados 
 
 Para compilar o projeto, basta digitar, pelo terminal, o comando abaixo
 
-    g++ src/main.cpp src/bBinariaIterativa.cpp src/bBinariaRecursiva.cpp src/bSequencialIterativa.cpp src/bSequencialRecursiva.cpp -std=c++11 -I include -o main
+    make
     
 
 Comando para executar o programa
     
-    ./main
+    ./bin/buscas
 
 
 ## TODO
