@@ -20,28 +20,77 @@ int main(){
 	int nBases = 5; // Quantidade de bases de busca
 	int tamN[] = { 50, 100, 1000, 10000, 100000 }; // Tamanhos das bases de busca
 
-	
-	// GRAVANDO DADOS EM ARQUIVO
-	std::ofstream arqsaida;
-	arqsaida.open( "dados.txt", std::ios::out );
-	if( !arqsaida.is_open() ){
+	// GRAVANDO DADOS EM ARQUIVO dadosBI.txt
+	std::ofstream arqsaidaBI;
+	arqsaidaBI.open( "dadosBI.txt", std::ios::out );
+	if( !arqsaidaBI.is_open() ){
 		return 0;
 	}
 
-	std::cout << "Gerando dados..." << std::endl;
+	std::cout << "Gerando dados BI..." << std::endl;
 
 	// Grava o cabeçalho
-	arqsaida << "#Dados para o script geraGrafico.gnu" << std::endl;
+	arqsaidaBI << "#Dados para o script geraGrafico.gnu da Busca Binária Iterativa" << std::endl;
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * Z - Tipo da busca = { 1 - binária iterativa
-	 						 2 - binária recursiva
-	 						 3 - sequencial iterativa
-	 						 4 - sequencial recursiva }
 	 * W - Chave de busca						 
 	*/
-	arqsaida << "#X" << std::setw(10) << "#Y" << std::setw(10) << "#Z" << std::setw(10) << "#W" << std::endl;
+	arqsaidaBI << "#X" << std::setw(10) << "#Y" << std::setw(10) << "#W" << std::endl;
+
+// GRAVANDO DADOS EM ARQUIVO dadosBR.txt
+	std::ofstream arqsaidaBR;
+	arqsaidaBR.open( "dadosBR.txt", std::ios::out );
+	if( !arqsaidaBR.is_open() ){
+		return 0;
+	}
+
+	std::cout << "Gerando dados BR..." << std::endl;
+
+	// Grava o cabeçalho
+	arqsaidaBR << "#Dados para o script geraGrafico.gnu da Busca Binária Recursiva" << std::endl;
+	/*
+	 * X - Tamanho da base de busca
+	 * Y - Tempo de execução
+	 * W - Chave de busca						 
+	*/
+	arqsaidaBR << "#X" << std::setw(10) << "#Y" << std::setw(10) << "#W" << std::endl;
+
+// GRAVANDO DADOS EM ARQUIVO dadosSI.txt
+	std::ofstream arqsaidaSI;
+	arqsaidaSI.open( "dadosSI.txt", std::ios::out );
+	if( !arqsaidaSI.is_open() ){
+		return 0;
+	}
+
+	std::cout << "Gerando dados SI..." << std::endl;
+
+	// Grava o cabeçalho
+	arqsaidaSI << "#Dados para o script geraGrafico.gnu  da Busca Sequencial Iterativa" << std::endl;
+	/*
+	 * X - Tamanho da base de busca
+	 * Y - Tempo de execução
+	 * W - Chave de busca						 
+	*/
+	arqsaidaSI << "#X" << std::setw(10) << "#Y" << std::setw(10) << "#W" << std::endl;
+
+// GRAVANDO DADOS EM ARQUIVO dadosSR.txt
+	std::ofstream arqsaidaSR;
+	arqsaidaSR.open( "dadosSR.txt", std::ios::out );
+	if( !arqsaidaSR.is_open() ){
+		return 0;
+	}
+
+	std::cout << "Gerando dados SR..." << std::endl;
+
+	// Grava o cabeçalho
+	arqsaidaSR << "#Dados para o script geraGrafico.gnu da Busca Sequencial Recursiva" << std::endl;
+	/*
+	 * X - Tamanho da base de busca
+	 * Y - Tempo de execução
+	 * W - Chave de busca						 
+	*/
+	arqsaidaSR << "#X" << std::setw(10) << "#Y" << std::setw(10) << "#W" << std::endl;
 
 
 	for ( int i = 0 ; i < nBases ; ++i ) { // Fazendo várias buscas, com bases aleatórias de diferentes tamanhos
@@ -64,29 +113,50 @@ int main(){
 
 		/* MEDIÇÃO DO TEMPO DE CADA IMPLEMENTAÇÃO DE BUSCA E COM CHAVES DE BUSCA DIFERENTES */
 		for ( int j = 0; j < qntKeys ; ++j ) {
-			tempoExecucao( arqsaida, base, tamBase, chavesDeBusca[j] );	
+			tempoExecucaoBI( arqsaidaBI, base, tamBase, chavesDeBusca[j] );	
+		}
+		for ( int j = 0; j < qntKeys ; ++j ) {
+			tempoExecucaoBR( arqsaidaBR, base, tamBase, chavesDeBusca[j] );	
+		}
+		for ( int j = 0; j < qntKeys ; ++j ) {
+			tempoExecucaoSI( arqsaidaSI, base, tamBase, chavesDeBusca[j] );	
+		}
+		for ( int j = 0; j < qntKeys ; ++j ) {
+			tempoExecucaoSR( arqsaidaSR, base, tamBase, chavesDeBusca[j] );	
 		}
 
 	}
 
-	// FECHANDO ARQUIVO COM DADOS
-	std::cout << "Fechando o arquivo..." << std::endl;
-	arqsaida.close();
+	// FECHANDO ARQUIVO COM DADOS BI
+	std::cout << "Fechando o arquivo dadosBI.txt..." << std::endl;
+	arqsaidaBI.close();
+
+	// FECHANDO ARQUIVO COM DADOS BR
+	std::cout << "Fechando o arquivo dadosBR.txt..." << std::endl;
+	arqsaidaBR.close();
+
+	// FECHANDO ARQUIVO COM DADOS SI
+	std::cout << "Fechando o arquivo dadosSI.txt..." << std::endl;
+	arqsaidaSI.close();
+
+	// FECHANDO ARQUIVO COM DADOS SR
+	std::cout << "Fechando o arquivo dadosSR.txt..." << std::endl;
+	arqsaidaSR.close();
 	
 	return 0;
 
 }
 
 /**
- * @brief Realiza a medição do tempo da execução de cada algoritmo de busca.
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca binária iterartiva.
  * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
  * @param arqsaida Arquivo de saída dos dados.
  * @param V Vetor com a base de busca.
  * @param n Tamanho da base de busca.
  * @param x Chave de busca.
- * @return O tempo de execução dos algoritmos de busca.
+ * @return O tempo de execução do algoritmo de busca binária iterartiva.
  */
-int tempoExecucao( std::ofstream & arqsaida, int *V, int n, int x ){
+int tempoExecucaoBI( std::ofstream & arqsaidaBI, int *V, int n, int x ){
 
 
 	clock_t Ticks[8];
@@ -96,40 +166,113 @@ int tempoExecucao( std::ofstream & arqsaida, int *V, int n, int x ){
 	Ticks[1] = clock();
 	double tempoBI = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
 
+	// Gravando os registros numéricos
+	arqsaidaBI << n << std::setw(10) << tempoBI << std::setw(10) << std::setw(10) << x << std::endl;
+
+	// Tratamento de erro de leitura de arquivo
+	if( arqsaidaBI.fail() ) {
+		std::cout << "Erro fatal!" << std::endl;
+		exit(1); // Aborta programa
+	}
+
+	return 0;
+
+}
+
+/**
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca binária recursiva.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho da base de busca.
+ * @param x Chave de busca.
+ * @return O tempo de execução do algoritmo de busca binária recursiva.
+ */
+int tempoExecucaoBR( std::ofstream & arqsaidaBR, int *V, int n, int x ){
+
+
+	clock_t Ticks[8];
+
 	Ticks[2] = clock();
 	bBinariaRecursiva( V, n, x );
 	Ticks[3] = clock();
 	double tempoBR = (Ticks[3] - Ticks[2]) * 1000.0 / CLOCKS_PER_SEC;
+
+	// Gravando os registros numéricos
+	arqsaidaBR << n << std::setw(10) << tempoBR << std::setw(10) << std::setw(10) << x << std::endl;
+
+	// Tratamento de erro de leitura de arquivo
+	if( arqsaidaBR.fail() ) {
+		std::cout << "Erro fatal!" << std::endl;
+		exit(1); // Aborta programa
+	}
+
+	return 0;
+
+}
+
+/**
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca sequencial iterartiva.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho da base de busca.
+ * @param x Chave de busca.
+ * @return O tempo de execução do algoritmo de busca sequencial iterartiva.
+ */
+int tempoExecucaoSI( std::ofstream & arqsaidaSI, int *V, int n, int x ){
+
+
+	clock_t Ticks[8];
 
 	Ticks[4] = clock();
 	bSequencialIterativa( V, n, x );
 	Ticks[5] = clock();
 	double tempoSI = (Ticks[5] - Ticks[4]) * 1000.0 / CLOCKS_PER_SEC;
 
-	Ticks[6] = clock();
-	bSequencialRecursiva( V, n, x );
-	Ticks[7] = clock();
-	double tempoSR = (Ticks[7] - Ticks[6]) * 1000.0 / CLOCKS_PER_SEC;
-	
-
-
 	// Gravando os registros numéricos
-	arqsaida << n << std::setw(10) << tempoBI << std::setw(10) << 1 << std::setw(10) << x << std::endl;
-	arqsaida << n << std::setw(10) << tempoBR << std::setw(10) << 2 << std::setw(10) << x << std::endl;
-	arqsaida << n << std::setw(10) << tempoSI << std::setw(10) << 3 << std::setw(10) << x << std::endl;
-	arqsaida << n << std::setw(10) << tempoSR << std::setw(10) << 4 << std::setw(10) << x << std::endl;
+	arqsaidaSI << n << std::setw(10) << tempoSI << std::setw(10) << std::setw(10) << x << std::endl;
 
 	// Tratamento de erro de leitura de arquivo
-	if( arqsaida.fail() ) {
+	if( arqsaidaSI.fail() ) {
 		std::cout << "Erro fatal!" << std::endl;
 		exit(1); // Aborta programa
 	}
-
 
 	return 0;
 
 }
 
+/**
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca sequencial recursiva.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho da base de busca.
+ * @param x Chave de busca.
+ * @return O tempo de execução do algoritmo de busca sequencial recursiva.
+ */
+int tempoExecucaoSR( std::ofstream & arqsaidaSR, int *V, int n, int x ){
+
+	clock_t Ticks[8];
+
+	Ticks[6] = clock();
+	bSequencialRecursiva( V, n, x );
+	Ticks[7] = clock();
+	double tempoSR = (Ticks[7] - Ticks[6]) * 1000.0 / CLOCKS_PER_SEC;
+
+	// Gravando os registros numéricos
+	arqsaidaSR << n << std::setw(10) << tempoSR << std::setw(10) << std::setw(10) << x << std::endl;
+
+	// Tratamento de erro de leitura de arquivo
+	if( arqsaidaSR.fail() ) {
+		std::cout << "Erro fatal!" << std::endl;
+		exit(1); // Aborta programa
+	}
+
+	return 0;
+
+}
 
 /**
  * @brief Realiza a comparação entre dois valores.
@@ -149,6 +292,8 @@ int compare( const void * a, const void * b ) {
     } else if ( *intA > *intB ) {
         return 1;
     } 
+
+    return 0;
  
 }
 
@@ -169,5 +314,4 @@ void generateRandomBase( int *base, int tamBase ){
 	// Ordena base de busca
 	qsort( base, tamBase, sizeof( int ), compare );
 	
-
 }
