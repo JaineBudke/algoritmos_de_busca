@@ -17,25 +17,60 @@ using std::cout;
 using std::endl;
 
 #include <iomanip>
+using std::setw;
 #include <time.h>
 
 #include <ctime>
 #include <cstdlib>
 
 #include <fstream>
+using std::ofstream;
 #include <string>
 
 
 /**
- * @brief Realiza a medição do tempo da execuçaõ de cada algoritmo de busca.
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca binária iterartiva.
  * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
  * @param arqsaida Arquivo de saída dos dados.
  * @param V Vetor com a base de busca.
- * @param n Tamanho do vetor.
+ * @param n Tamanho da base de busca.
  * @param x Chave de busca.
- * @return O tempo de execução dos algoritmos de busca.
+ * @return O tempo de execução do algoritmo de busca binária iterartiva.
  */
-int tempoExecucao( std::ofstream & arqsaida, int *V, int n, int x );
+int tempoExecucaoBI( std::ofstream & arqsaida, int *V, int n, int x );
+
+/**
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca binária recursiva.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho da base de busca.
+ * @param x Chave de busca.
+ * @return O tempo de execução do algoritmo de busca binária recursiva.
+ */
+int tempoExecucaoBR( std::ofstream & arqsaida, int *V, int n, int x );
+
+/**
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca sequencial iterartiva.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho da base de busca.
+ * @param x Chave de busca.
+ * @return O tempo de execução do algoritmo de busca sequencial iterartiva.
+ */
+int tempoExecucaoSI( std::ofstream & arqsaida, int *V, int n, int x );
+
+/**
+ * @brief Realiza a medição do tempo da execução do algoritmo de busca sequencial recursiva.
+ * @details Função implementada fazendo uso das bibliotecas iomanip e time.h.
+ * @param arqsaida Arquivo de saída dos dados.
+ * @param V Vetor com a base de busca.
+ * @param n Tamanho da base de busca.
+ * @param x Chave de busca.
+ * @return O tempo de execução do algoritmo de busca sequencial recursiva.
+ */
+int tempoExecucaoSR( std::ofstream & arqsaida, int *V, int n, int x );
 
 
 /**

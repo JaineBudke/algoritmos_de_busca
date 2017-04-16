@@ -72,6 +72,7 @@ int bBinariaRecursiva( int *V, int n, int x ){
     else if( valorMemoria < x ) { // realiza busca na segunda metade
         return( bBinariaRecursiva(&V[indice+1], n-indice-1, x) );
     }
+    return 0;
 
 }
 
