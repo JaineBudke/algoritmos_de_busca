@@ -18,7 +18,7 @@ int main(){
 	std::srand(std::time(0)); // semente do rand
 
 	int nBases = 5; // Quantidade de bases de busca
-	int tamN[] = { 50, 100, 1000, 10000, 100000 }; // Tamanhos das bases de busca
+	int tamN[] = { 100, 1000, 10000, 50000, 100000 }; // Tamanhos das bases de busca
 
 	///////////////////////////////////////////////////////////////////////////
 	// GRAVANDO DADOS EM ARQUIVOS dadosBI1.txt, dadosBI2.txt, dadosBI3.txt
@@ -287,7 +287,7 @@ int main(){
 		tempoExecucaoSR( arqsaidaSR1, base, tamBase, base[0] );	
 		tempoExecucaoSR( arqsaidaSR2, base, tamBase, base[ tamBase-1 ]+1 );	
 		tempoExecucaoSR( arqsaidaSR3, base, tamBase, base[ tamBase/2 ] );	
-
+		
 	}
 
 	// FECHANDO ARQUIVO COM DADOS BI
