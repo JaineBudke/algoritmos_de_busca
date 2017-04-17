@@ -133,6 +133,6 @@ int bSequencialIterativa( int *V, int n, int x );
  * @param x Chave de busca.
  * @return Se elemento foi encontrado ("1" se encontrado ou "0" se não encontrado).
  */
-int bSequencialRecursiva( int *V, int n, int x );
+int bSequencialRecursiva( int *V, int indice, int n, int x );
 
 #endif

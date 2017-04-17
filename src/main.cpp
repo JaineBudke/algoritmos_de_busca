@@ -17,8 +17,8 @@ int main(){
 	
 	std::srand(std::time(0)); // semente do rand
 
-	int nBases = 5; // Quantidade de bases de busca
-	int tamN[] = { 100, 1000, 10000, 50000, 100000 }; // Tamanhos das bases de busca
+	int nBases = 14; // Quantidade de bases de busca
+	int tamN[] = { 100, 500, 1000, 5000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000 }; // Tamanhos das bases de busca
 
 	///////////////////////////////////////////////////////////////////////////
 	// GRAVANDO DADOS EM ARQUIVOS dadosBI1.txt, dadosBI2.txt, dadosBI3.txt
@@ -37,7 +37,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaBI1 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -55,7 +54,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaBI2 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -73,7 +71,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaBI3 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -94,8 +91,7 @@ int main(){
 	arqsaidaBR1 << "#Dados para o script geraGrafico.gnu da Busca Binária Recursiva" << std::endl;
 	/*
 	 * X - Tamanho da base de busca
-	 * Y - Tempo de execução
-	 * W - Chave de busca						 
+	 * Y - Tempo de execução					 
 	*/
 	arqsaidaBR1 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -113,7 +109,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaBR2 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -131,7 +126,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaBR3 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -153,7 +147,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaSI1 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -171,7 +164,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaSI2 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -189,7 +181,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaSI3 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -212,7 +203,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaSR1 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -230,7 +220,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaSR2 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -248,7 +237,6 @@ int main(){
 	/*
 	 * X - Tamanho da base de busca
 	 * Y - Tempo de execução
-	 * W - Chave de busca						 
 	*/
 	arqsaidaSR3 << "#X" << std::setw(10) << "#Y" << std::endl;
 
@@ -283,7 +271,7 @@ int main(){
 		tempoExecucaoSI( arqsaidaSI1, base, tamBase, base[0] );	
 		tempoExecucaoSI( arqsaidaSI2, base, tamBase, base[ tamBase-1 ]+1 );	
 		tempoExecucaoSI( arqsaidaSI3, base, tamBase, base[ tamBase/2 ] );	
-
+		
 		tempoExecucaoSR( arqsaidaSR1, base, tamBase, base[0] );	
 		tempoExecucaoSR( arqsaidaSR2, base, tamBase, base[ tamBase-1 ]+1 );	
 		tempoExecucaoSR( arqsaidaSR3, base, tamBase, base[ tamBase/2 ] );	
@@ -331,13 +319,13 @@ int main(){
 int tempoExecucaoBI( std::ofstream & arqsaidaBI, int *V, int n, int x ){
 
 
-	clock_t Ticks[8];
+	clock_t Ticks[2];
 
     Ticks[0] = clock();
 	bBinariaIterativa( V, n, x );
 	Ticks[1] = clock();
 	double tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-
+	
 	// Gravando os registros numéricos
 	arqsaidaBI << n << std::setw(10) << tempo << x << std::endl;
 
@@ -363,12 +351,12 @@ int tempoExecucaoBI( std::ofstream & arqsaidaBI, int *V, int n, int x ){
 int tempoExecucaoBR( std::ofstream & arqsaidaBR, int *V, int n, int x ){
 
 
-	clock_t Ticks[8];
+	clock_t Ticks[2];
 
-	Ticks[2] = clock();
+	Ticks[0] = clock();
 	bBinariaRecursiva( V, n, x );
-	Ticks[3] = clock();
-	double tempoBR = (Ticks[3] - Ticks[2]) * 1000.0 / CLOCKS_PER_SEC;
+	Ticks[1] = clock();
+	double tempoBR = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
 
 	// Gravando os registros numéricos
 	arqsaidaBR << n << std::setw(10) << tempoBR << std::endl;
@@ -395,12 +383,12 @@ int tempoExecucaoBR( std::ofstream & arqsaidaBR, int *V, int n, int x ){
 int tempoExecucaoSI( std::ofstream & arqsaidaSI, int *V, int n, int x ){
 
 
-	clock_t Ticks[8];
+	clock_t Ticks[2];
 
-	Ticks[4] = clock();
+	Ticks[0] = clock();
 	bSequencialIterativa( V, n, x );
-	Ticks[5] = clock();
-	double tempoSI = (Ticks[5] - Ticks[4]) * 1000.0 / CLOCKS_PER_SEC;
+	Ticks[1] = clock();
+	double tempoSI = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
 
 	// Gravando os registros numéricos
 	arqsaidaSI << n << std::setw(10) << tempoSI << std::endl;
@@ -426,12 +414,12 @@ int tempoExecucaoSI( std::ofstream & arqsaidaSI, int *V, int n, int x ){
  */
 int tempoExecucaoSR( std::ofstream & arqsaidaSR, int *V, int n, int x ){
 
-	clock_t Ticks[8];
+	clock_t Ticks[2];
 
-	Ticks[6] = clock();
-	bSequencialRecursiva( V, n, x );
-	Ticks[7] = clock();
-	double tempoSR = (Ticks[7] - Ticks[6]) * 1000.0 / CLOCKS_PER_SEC;
+	Ticks[0] = clock();
+	bSequencialRecursiva( V, 0, n, x );
+	Ticks[1] = clock();
+	double tempoSR = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
 
 	// Gravando os registros numéricos
 	arqsaidaSR << n << std::setw(10) << tempoSR << std::endl;

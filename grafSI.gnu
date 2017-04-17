@@ -1,4 +1,4 @@
-#Instruções para plotar Sequencial Iterativa
+#Instruções para plotar sen(x)
 reset
 set grid
 set title "Busca Sequencial Iterativa"

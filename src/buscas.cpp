@@ -9,7 +9,7 @@
  * @date    16/04/2017
  */
 
- #include "buscas.h"
+#include "buscas.h"
 
 /**
  * @brief Realiza uma busca binária em uma base de dados, passada por 
@@ -29,17 +29,18 @@ int bBinariaIterativa( int *V, int n, int x ){
     while ( inf <= sup ) {
         
         indice = ( inf + sup ) / 2; 
+        int valorMemoria = V[indice];
         
-        if ( x == V[indice] ) {
+        if ( x == valorMemoria ) {
             return 1;
-        } else if ( x < V[indice] ) {
+        } else if ( valorMemoria > x ) {
             sup = indice-1;
-        } else {
+        } else if( valorMemoria < x ) {
             inf = indice+1;
         }
 
     }
-    
+
     return 0; // valor não encontrado
 
 }
@@ -63,7 +64,7 @@ int bBinariaRecursiva( int *V, int n, int x ){
     int valorMemoria = V[indice]; // valor elemento do meio
     
     if ( valorMemoria == x ) // encontrou elemento
-        return indice;
+        return 1;
     
     else if ( valorMemoria > x ) { // realiza busca na primeira metade
         return( bBinariaRecursiva( V, indice, x ) );
@@ -87,10 +88,12 @@ int bBinariaRecursiva( int *V, int n, int x ){
  */
 int bSequencialIterativa( int *V, int n, int x ){
 
-    for (int i = 0 ; i < n ; ++i) {
-        if ( V[i] == x ) {
+    for ( int i = 0 ; i < n ; ++i ) {
+        if( V[i] == x ){
             return 1;
-            break;
+        }
+        else if( V[i] > x ){
+            return 0;
         }
     }
 
@@ -107,14 +110,16 @@ int bSequencialIterativa( int *V, int n, int x ){
  * @param x Chave de busca.
  * @return Se elemento foi encontrado ("1" se encontrado ou "0" se não encontrado).
  */
-int bSequencialRecursiva( int *V, int n, int x ){
+int bSequencialRecursiva( int *V, int indice, int n, int x ){
 
-    if ( n == 0 ) { // vetor vazio, elemento não encontrado
+    if( indice == n ){
         return 0;
-    } else if ( V[n] == x ) {  // encontrou elemento
+    } else if( V[indice] > x ){
+        return 0;
+    } else if( x == V[indice] ){
         return 1;
     } else {
-        return bSequencialRecursiva( V , n-1 , x );
+        return bSequencialRecursiva( V, indice+1, n, x );
     }
 
 }
